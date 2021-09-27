@@ -286,9 +286,15 @@ def copy_generated_files():
         Path(DEST_PATH).joinpath('community-digikey-api-batchproductdetails/digikey.v3.batchproductdetails'),
         Path(API_PATH).joinpath('batchproductdetails'), dirs_exist_ok=True)
 
+    logging.info('Copy generated barcode files to api destination')
+    shutil.copytree(Path(DEST_PATH).joinpath('community-digikey-api-barcode/digikey/v3/barcode'),
+                    Path(API_PATH).joinpath('barcode'), dirs_exist_ok=True)
+    shutil.copytree(Path(DEST_PATH).joinpath('community-digikey-api-barcode/digikey.v3.barcode'),
+                    Path(API_PATH).joinpath('barcode'), dirs_exist_ok=True)
+
 
 # Currently supported API's
-apiGenerateList = ['product-information', 'order-support', 'batch-product-details']
+apiGenerateList = ['product-information', 'order-support', 'batch-product-details', 'barcode']
 
 # Generate Digikey API python clients
 generated = [

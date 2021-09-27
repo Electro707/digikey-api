@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Order Details
+    Barcoding
 
-    Retrieve information about current and past orders.  # noqa: E501
+    Retrieve package information from the barcode.  # noqa: E501
 
     OpenAPI spec version: v3
     
