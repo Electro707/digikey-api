@@ -9,6 +9,7 @@ from digikey.v3.productinformation import (KeywordSearchRequest, KeywordSearchRe
 from digikey.v3.productinformation.rest import ApiException
 from digikey.v3.ordersupport import (OrderStatusResponse, SalesOrderHistoryItem)
 from digikey.v3.batchproductdetails import (BatchProductDetailsRequest, BatchProductDetailsResponse)
+from digikey.v3.barcode import (Product2DBarcodeResponse)
 
 logger = logging.getLogger(__name__)
 
@@ -18,13 +19,15 @@ class DigikeyAPI:
         apinames = {
             digikey.v3.productinformation: 'Search',
             digikey.v3.ordersupport: 'OrderDetails',
-            digikey.v3.batchproductdetails: 'BatchSearch'
+            digikey.v3.batchproductdetails: 'BatchSearch',
+            digikey.v3.barcode: 'Barcoding'
         }
 
         apiclasses = {
             digikey.v3.productinformation: digikey.v3.productinformation.PartSearchApi,
             digikey.v3.ordersupport: digikey.v3.ordersupport.OrderDetailsApi,
-            digikey.v3.batchproductdetails: digikey.v3.batchproductdetails.BatchSearchApi
+            digikey.v3.batchproductdetails: digikey.v3.batchproductdetails.BatchSearchApi,
+            digikey.v3.barcode: digikey.v3.barcode.BarcodingApi,
         }
 
         def __init__(self, config_file: digikey.configfile.DigikeyBaseConfig, is_sandbox: bool = False):
@@ -213,3 +216,18 @@ class DigikeyAPI:
             return self.client.call_api_function(*args, **kwargs)
         else:
             raise DigikeyError('Please provide a valid BatchProductDetailsRequest argument')
+
+    def barcode_2d(self, *args, **kwargs) -> Product2DBarcodeResponse:
+        self.client.change_api('product2_d_barcode_with_http_info', digikey.v3.barcode)
+
+        if len(args):
+            logger.info(f'Get barcode details for: {args[0].encode("utf-8")}')
+            # Barcode encoding, converting ASCII characters to Unicode as per the API's request
+            args = list(args)
+            args[0] = args[0].encode("utf-8")
+            args[0] = args[0].replace(u"\u001E".encode('utf-8'), u"\u241E".encode('utf-8'))
+            args[0] = args[0].replace(u"\u001D".encode('utf-8'), u"\u241D".encode('utf-8'))
+            args[0] = args[0].decode("utf-8")
+            args = tuple(args)
+            print(args[0])
+            return self.client.call_api_function(*args, **kwargs)
