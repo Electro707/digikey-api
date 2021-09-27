@@ -76,6 +76,11 @@ swaggerCodeGen_config_all = {
         "projectName": "community-digikey-api-batchproductdetails",
         "packageVersion": "0.1.0",
     }
+    , 'barcode': {
+        "packageName": "digikey.v3.barcode",
+        "projectName": "community-digikey-api-barcode",
+        "packageVersion": "0.1.0",
+    }
 }
 
 digikeyAPIdef_all = {
@@ -97,6 +102,12 @@ digikeyAPIdef_all = {
              , apiQuery='batchproductdetails'
              , urlNode='682'
              )
+    , 'barcode':
+        dict(apiGroup='barcode'
+             , apiSubGroup='barcoding'
+             , apiQuery='product2dbarcode'
+             , urlNode='465'
+             )
 }
 
 
@@ -105,8 +116,7 @@ def getDigikeyAPIswaggerSpecJSON(destPath, **kwargs):
     refererURL = 'https://developer.digikey.com/products/{apiGroup}/{apiSubGroup}/{apiQuery}?prod=true'.format(**kwargs)
     url = 'https://developer.digikey.com/node/{urlNode}/oas-download'.format(**kwargs)
     r = requests.get(url, headers={
-        'referer': refererURL
-        ,
+        'referer': refererURL,
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36'
     })
     if r.ok:
@@ -115,7 +125,7 @@ def getDigikeyAPIswaggerSpecJSON(destPath, **kwargs):
             f.write(r.content)
         logging.info('Retrieved Digikey API Specification: {}'.format(swaggerSpecFile))
     else:
-        message = 'Unable to retrieve Digikey API Specification: {apiGroup}/{apiSubGroup}/{apiQuery}'.format(kwargs)
+        message = 'Unable to retrieve Digikey API Specification: {apiGroup}/{apiSubGroup}/{apiQuery}'.format(**kwargs)
         logging.error(message)
         raise Exception(message)
     return (os.path.join(destPath, swaggerSpecFile))
