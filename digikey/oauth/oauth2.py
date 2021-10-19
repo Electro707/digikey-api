@@ -51,7 +51,7 @@ class Oauth2Token:
     @property
     def expires(self):
         if self._config.get('expires') is not None:
-            return datetime.fromtimestamp(self._config.get('expires'), timezone.utc)
+            return datetime.fromtimestamp(float(self._config.get('expires')), timezone.utc)
         return None
 
     @property
