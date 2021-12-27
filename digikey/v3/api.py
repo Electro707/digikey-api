@@ -109,9 +109,7 @@ class DigikeyAPI:
         def _store_api_statuscode(statuscode, status):
             if status is not None and type(status) == dict:
                 status['code'] = int(statuscode)
-
             logger.debug('API returned code: {}'.format(statuscode))
-
         def call_api_function(self, *args, **kwargs):
             try:
                 # If optional api_limits, status mutable object is passed use it to store API limits and status code

@@ -39,10 +39,8 @@ import digikey
 from digikey.v3.productinformation import KeywordSearchRequest
 
 dk_config = digikey.DigikeyJsonConfig(file_name='dk_conf.json')
-dk_config.set('client-id', 'ENTER_CLIENT_ID')
-dk_config.set('client-secret', 'ENTER_CLIENT_SECRET')
-
 dk_api = digikey.DigikeyAPI(dk_config, is_sandbox=False)
+dk_api.set_client_info(client_id='ENTER_CLIENT_ID', client_secret='ENTER_CLIENT_SECRET')
 
 # Query product number
 dkpn = '296-6501-1-ND'
@@ -59,6 +57,14 @@ only `DigikeyJsonConfig` is implemented for storing settings in a JSON file, but
 See [docs/DigikeyBaseConfig.md](docs/DigikeyBaseConfig.md) for more details on that.
 
 ## Top-level APIs
+
+#### Configuration Related Functions
+* `set_client_info()`
+    * Arguments are `client_id` and `client_secret`
+* `DigikeyAPI.needs_client_id()`
+    * Returns `True` if a client ID is needed/missing
+* `DigikeyAPI.needs_client_secret()`
+    * Returns `True` if a client secret is needed/missing
 
 #### Product Information
 All functions from the [PartSearch](https://developer.digikey.com/products/product-information/partsearch/) API have been implemented.
@@ -99,46 +105,3 @@ The dict will be filled with the information returned from the API:
 ```
 Sometimes the API does not return any rate limit data, the values will then be set to None.
 
-# API V2 [Deprecated]
-**NOTE: API V2 is not supported anymore by Digi-Key and you cannot register new applications**
-
-See API V3 above to use the new API.
-
-## Register
-Register an app on the Digikey API portal: [Digi-Key API V2](https://api-portal.digikey.com/start). You will need the client
-ID and the client secret to use the API. You will also need a Digi-Key account to authenticate, using the Oauth2 process.
-
-## Use
-Python will automatically spawn a browser to allow you to authenticate using the Oauth2 process. After obtaining a token
-the library will cache the access token and use the refresh token to automatically refresh your credentials.
-
-```python
-import os
-import digikey
-
-os.environ['DIGIKEY_CLIENT_ID'] = 'client_id'
-os.environ['DIGIKEY_CLIENT_SECRET'] = 'client_secret'
-os.environ['DIGIKEY_STORAGE_PATH'] = 'cache_dir'
-
-dkpn = '296-6501-1-ND'
-part = digikey.part(dkpn)
-print(part)
-# <Part mpn=NE555DR>
-
-print(part.manufacturer)
-# 'Texas Instruments'
-```
-
-## Test
-```sh
-python -m pytest --cov=digikey --doctest-modules --ignore=setup.py
-python -m mypy digikey --ignore-missing-imports
-```
-
-## Top-level API
-* `digikey.search()`
-* `digikey.part()`
-
-## Data models
-* `digikey.models.KeywordSearchResult`
-* `digikey.models.Part`
