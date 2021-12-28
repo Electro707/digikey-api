@@ -15,9 +15,9 @@
 from __future__ import absolute_import
 
 # import models into model package
-from digikey.v3.barcode.models.api_error_response import ApiErrorResponse
-from digikey.v3.barcode.models.api_validation_error import ApiValidationError
-from digikey.v3.barcode.models.pack_list_barcode_response import PackListBarcodeResponse
-from digikey.v3.barcode.models.pack_list_detail import PackListDetail
-from digikey.v3.barcode.models.product2_d_barcode_response import Product2DBarcodeResponse
-from digikey.v3.barcode.models.product_barcode_response import ProductBarcodeResponse
+from e707_digikey.v3.barcode.models.api_error_response import ApiErrorResponse
+from e707_digikey.v3.barcode.models.api_validation_error import ApiValidationError
+from e707_digikey.v3.barcode.models.pack_list_barcode_response import PackListBarcodeResponse
+from e707_digikey.v3.barcode.models.pack_list_detail import PackListDetail
+from e707_digikey.v3.barcode.models.product2_d_barcode_response import Product2DBarcodeResponse
+from e707_digikey.v3.barcode.models.product_barcode_response import ProductBarcodeResponse

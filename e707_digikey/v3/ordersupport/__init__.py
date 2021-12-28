@@ -16,19 +16,19 @@
 from __future__ import absolute_import
 
 # import apis into sdk package
-from digikey.v3.ordersupport.api.order_details_api import OrderDetailsApi
+from e707_digikey.v3.ordersupport.api.order_details_api import OrderDetailsApi
 
 # import ApiClient
-from digikey.v3.ordersupport.api_client import ApiClient
-from digikey.v3.ordersupport.configuration import Configuration
+from e707_digikey.v3.ordersupport.api_client import ApiClient
+from e707_digikey.v3.ordersupport.configuration import Configuration
 # import models into sdk package
-from digikey.v3.ordersupport.models.address import Address
-from digikey.v3.ordersupport.models.api_error_response import ApiErrorResponse
-from digikey.v3.ordersupport.models.api_validation_error import ApiValidationError
-from digikey.v3.ordersupport.models.back_order_details import BackOrderDetails
-from digikey.v3.ordersupport.models.default_shipping import DefaultShipping
-from digikey.v3.ordersupport.models.line_item import LineItem
-from digikey.v3.ordersupport.models.order_status_response import OrderStatusResponse
-from digikey.v3.ordersupport.models.sales_order_history_item import SalesOrderHistoryItem
-from digikey.v3.ordersupport.models.schedule import Schedule
-from digikey.v3.ordersupport.models.shipping_detail import ShippingDetail
+from e707_digikey.v3.ordersupport.models.address import Address
+from e707_digikey.v3.ordersupport.models.api_error_response import ApiErrorResponse
+from e707_digikey.v3.ordersupport.models.api_validation_error import ApiValidationError
+from e707_digikey.v3.ordersupport.models.back_order_details import BackOrderDetails
+from e707_digikey.v3.ordersupport.models.default_shipping import DefaultShipping
+from e707_digikey.v3.ordersupport.models.line_item import LineItem
+from e707_digikey.v3.ordersupport.models.order_status_response import OrderStatusResponse
+from e707_digikey.v3.ordersupport.models.sales_order_history_item import SalesOrderHistoryItem
+from e707_digikey.v3.ordersupport.models.schedule import Schedule
+from e707_digikey.v3.ordersupport.models.shipping_detail import ShippingDetail

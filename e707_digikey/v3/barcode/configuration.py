@@ -40,7 +40,7 @@ class Configuration(object):
             return
 
         # Default Base url
-        self.host = "https://api.digikey.com/BarCoding/v3"
+        self.host = "https://api.digikey.com/Barcoding/v3"
         # Temp file folder for downloading files
         self.temp_folder_path = None
 
@@ -59,7 +59,7 @@ class Configuration(object):
 
         # Logging Settings
         self.logger = {}
-        self.logger["package_logger"] = logging.getLogger("digikey.v3.barcode")
+        self.logger["package_logger"] = logging.getLogger("e707_digikey.v3.barcode")
         self.logger["urllib3_logger"] = logging.getLogger("urllib3")
         # Log format
         self.logger_format = '%(asctime)s %(levelname)s %(message)s'
