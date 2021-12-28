@@ -17,20 +17,20 @@ logger = logging.getLogger(__name__)
 class DigikeyAPI:
     class DigikeyApiWrapper(object):
         apinames = {
-            digikey.v3.productinformation: 'Search',
-            digikey.v3.ordersupport: 'OrderDetails',
-            digikey.v3.batchproductdetails: 'BatchSearch',
-            digikey.v3.barcode: 'Barcoding'
+            e707_digikey.v3.productinformation: 'Search',
+            e707_digikey.v3.ordersupport: 'OrderDetails',
+            e707_digikey.v3.batchproductdetails: 'BatchSearch',
+            e707_digikey.v3.barcode: 'Barcoding'
         }
 
         apiclasses = {
-            digikey.v3.productinformation: digikey.v3.productinformation.PartSearchApi,
-            digikey.v3.ordersupport: digikey.v3.ordersupport.OrderDetailsApi,
-            digikey.v3.batchproductdetails: digikey.v3.batchproductdetails.BatchSearchApi,
-            digikey.v3.barcode: digikey.v3.barcode.BarcodingApi,
+            e707_digikey.v3.productinformation: e707_digikey.v3.productinformation.PartSearchApi,
+            e707_digikey.v3.ordersupport: e707_digikey.v3.ordersupport.OrderDetailsApi,
+            e707_digikey.v3.batchproductdetails: e707_digikey.v3.batchproductdetails.BatchSearchApi,
+            e707_digikey.v3.barcode: e707_digikey.v3.barcode.BarcodingApi,
         }
 
-        def __init__(self, config_file: digikey.configfile.DigikeyBaseConfig, is_sandbox: bool = False):
+        def __init__(self, config_file: e707_digikey.configfile.DigikeyBaseConfig, is_sandbox: bool = False):
             self.sandbox = is_sandbox
             self.apiname = None
             self._api_instance = None
@@ -127,7 +127,7 @@ class DigikeyAPI:
                 logger.error(f'Exception when calling {self.wrapped_function}: {e}')
                 self._store_api_statuscode(e.status, status)
 
-    def __init__(self, config_constructor: digikey.configfile.DigikeyBaseConfig, is_sandbox: bool = False):
+    def __init__(self, config_constructor: e707_digikey.configfile.DigikeyBaseConfig, is_sandbox: bool = False):
         self.config = config_constructor
         self.client = self.DigikeyApiWrapper(self.config, is_sandbox)
 
@@ -149,7 +149,7 @@ class DigikeyAPI:
         self.config.save()
 
     def keyword_search(self, *args, **kwargs) -> KeywordSearchResponse:
-        self.client.change_api('keyword_search_with_http_info', digikey.v3.productinformation)
+        self.client.change_api('keyword_search_with_http_info', e707_digikey.v3.productinformation)
 
         if 'body' in kwargs and type(kwargs['body']) == KeywordSearchRequest:
             logger.info(f'Search for: {kwargs["body"].keywords}')
@@ -159,28 +159,28 @@ class DigikeyAPI:
             raise DigikeyError('Please provide a valid KeywordSearchRequest argument')
 
     def product_details(self, *args, **kwargs) -> ProductDetails:
-        self.client.change_api('product_details_with_http_info', digikey.v3.productinformation)
+        self.client.change_api('product_details_with_http_info', e707_digikey.v3.productinformation)
 
         if len(args):
             logger.info(f'Get product details for: {args[0]}')
             return self.client.call_api_function(*args, **kwargs)
 
     def digi_reel_pricing(self, *args, **kwargs) -> DigiReelPricing:
-        self.client.change_api('digi_reel_pricing_with_http_info', digikey.v3.productinformation)
+        self.client.change_api('digi_reel_pricing_with_http_info', e707_digikey.v3.productinformation)
 
         if len(args):
             logger.info(f'Calculate the DigiReel pricing for {args[0]} with quantity {args[1]}')
             return self.client.call_api_function(*args, **kwargs)
 
     def suggested_parts(self, *args, **kwargs) -> ProductDetails:
-        self.client.change_api('suggested_parts_with_http_info', digikey.v3.productinformation)
+        self.client.change_api('suggested_parts_with_http_info', e707_digikey.v3.productinformation)
 
         if len(args):
             logger.info(f'Retrieve detailed product information and two suggested products for: {args[0]}')
             return self.client.call_api_function(*args, **kwargs)
 
     def manufacturer_product_details(self, *args, **kwargs) -> KeywordSearchResponse:
-        self.client.change_api('manufacturer_product_details_with_http_info', digikey.v3.productinformation)
+        self.client.change_api('manufacturer_product_details_with_http_info', e707_digikey.v3.productinformation)
 
         if 'body' in kwargs and type(kwargs['body']) == ManufacturerProductDetailsRequest:
             logger.info(f'Search for: {kwargs["body"].manufacturer_product}')
@@ -189,14 +189,14 @@ class DigikeyAPI:
             raise DigikeyError('Please provide a valid ManufacturerProductDetailsRequest argument')
 
     def status_salesorder_id(self, *args, **kwargs) -> OrderStatusResponse:
-        self.client.change_api('status_salesorder_id_get_with_http_info', digikey.v3.ordersupport)
+        self.client.change_api('status_salesorder_id_get_with_http_info', e707_digikey.v3.ordersupport)
 
         if len(args):
             logger.info(f'Get order details for: {args[0]}')
             return self.client.call_api_function(*args, **kwargs)
 
     def salesorder_history(self, *args, **kwargs) -> [SalesOrderHistoryItem]:
-        self.client.change_api('history_get_with_http_info', digikey.v3.ordersupport)
+        self.client.change_api('history_get_with_http_info', e707_digikey.v3.ordersupport)
 
         if 'start_date' in kwargs and type(kwargs['start_date']) == str \
                 and 'end_date' in kwargs and type(kwargs['end_date']) == str:
@@ -206,7 +206,7 @@ class DigikeyAPI:
             raise DigikeyError('Please provide valid start_date and end_date strings')
 
     def batch_product_details(self, *args, **kwargs) -> BatchProductDetailsResponse:
-        self.client.change_api('batch_product_details_with_http_info', digikey.v3.batchproductdetails)
+        self.client.change_api('batch_product_details_with_http_info', e707_digikey.v3.batchproductdetails)
 
         if 'body' in kwargs and type(kwargs['body']) == BatchProductDetailsRequest:
             logger.info(f'Batch product search: {kwargs["body"].products}')
@@ -216,7 +216,7 @@ class DigikeyAPI:
             raise DigikeyError('Please provide a valid BatchProductDetailsRequest argument')
 
     def barcode_2d(self, *args, **kwargs) -> Product2DBarcodeResponse:
-        self.client.change_api('product2_d_barcode_with_http_info', digikey.v3.barcode)
+        self.client.change_api('product2_d_barcode_with_http_info', e707_digikey.v3.barcode)
 
         if len(args):
             logger.info(f'Get barcode details for: {args[0].encode("utf-8")}')

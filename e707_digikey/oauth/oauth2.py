@@ -13,9 +13,9 @@ from webbrowser import open_new
 import requests
 from certauth.certauth import CertificateAuthority
 
-from digikey.constants import USER_AGENT
-from digikey.exceptions import DigikeyOauthException
-from digikey import configfile
+from e707_digikey.constants import USER_AGENT
+from e707_digikey.exceptions import DigikeyOauthException
+from e707_digikey import configfile
 
 CA_CERT = 'digikey-api.pem'
 TOKEN_STORAGE = 'token_storage.json'
