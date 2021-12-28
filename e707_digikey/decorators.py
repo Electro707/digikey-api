@@ -4,7 +4,7 @@ import logging
 import retrying
 from requests.exceptions import RequestException
 
-from digikey.exceptions import DigikeyError
+from e707_digikey.exceptions import DigikeyError
 
 logger = logging.getLogger(__name__)
 

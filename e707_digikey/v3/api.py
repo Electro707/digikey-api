@@ -1,15 +1,15 @@
 import os
 import logging
 from distutils.util import strtobool
-import digikey.oauth.oauth2
-import digikey.configfile
-from digikey.exceptions import DigikeyError
-from digikey.v3.productinformation import (KeywordSearchRequest, KeywordSearchResponse, ProductDetails, DigiReelPricing,
+import e707_digikey.oauth.oauth2
+import e707_digikey.configfile
+from e707_digikey.exceptions import DigikeyError
+from e707_digikey.v3.productinformation import (KeywordSearchRequest, KeywordSearchResponse, ProductDetails, DigiReelPricing,
                                            ManufacturerProductDetailsRequest)
-from digikey.v3.productinformation.rest import ApiException
-from digikey.v3.ordersupport import (OrderStatusResponse, SalesOrderHistoryItem)
-from digikey.v3.batchproductdetails import (BatchProductDetailsRequest, BatchProductDetailsResponse)
-from digikey.v3.barcode import (Product2DBarcodeResponse)
+from e707_digikey.v3.productinformation.rest import ApiException
+from e707_digikey.v3.ordersupport import (OrderStatusResponse, SalesOrderHistoryItem)
+from e707_digikey.v3.batchproductdetails import (BatchProductDetailsRequest, BatchProductDetailsResponse)
+from e707_digikey.v3.barcode import (Product2DBarcodeResponse)
 
 logger = logging.getLogger(__name__)
 

@@ -62,22 +62,22 @@ _, swagger_codegen_cli_version_jar = os.path.split(swaggerCodeGenURL)
 
 swaggerCodeGen_config_all = {
     'product-information': {
-        "packageName": "digikey.v3.productinformation",
+        "packageName": "e707_digikey.v3.productinformation",
         "projectName": "community-digikey-api-productinformation",
         "packageVersion": "0.1.0",
     }
     , 'order-support': {
-        "packageName": "digikey.v3.ordersupport",
+        "packageName": "e707_digikey.v3.ordersupport",
         "projectName": "community-digikey-api-ordersupport",
         "packageVersion": "0.1.0",
     }
     , 'batch-product-details': {
-        "packageName": "digikey.v3.batchproductdetails",
+        "packageName": "e707_digikey.v3.batchproductdetails",
         "projectName": "community-digikey-api-batchproductdetails",
         "packageVersion": "0.1.0",
     }
     , 'barcode': {
-        "packageName": "digikey.v3.barcode",
+        "packageName": "e707_digikey.v3.barcode",
         "projectName": "community-digikey-api-barcode",
         "packageVersion": "0.1.0",
     }
@@ -267,29 +267,29 @@ def copytree(src, dst, symlinks=False, ignore=None):
 def copy_generated_files():
     logging.info('----- COPY generated files')
     logging.info('Copy generated productinformation files to api destination')
-    shutil.copytree(Path(DEST_PATH).joinpath('community-digikey-api-productinformation/digikey/v3/productinformation'),
+    shutil.copytree(Path(DEST_PATH).joinpath('community-digikey-api-productinformation/e707_digikey/v3/productinformation'),
                     Path(API_PATH).joinpath('productinformation'), dirs_exist_ok=True)
-    shutil.copytree(Path(DEST_PATH).joinpath('community-digikey-api-productinformation/digikey.v3.productinformation'),
+    shutil.copytree(Path(DEST_PATH).joinpath('community-digikey-api-productinformation/e707_digikey.v3.productinformation'),
                     Path(API_PATH).joinpath('productinformation'), dirs_exist_ok=True)
 
     logging.info('Copy generated ordersupport files to api destination')
-    shutil.copytree(Path(DEST_PATH).joinpath('community-digikey-api-ordersupport/digikey/v3/ordersupport'),
+    shutil.copytree(Path(DEST_PATH).joinpath('community-digikey-api-ordersupport/e707_digikey/v3/ordersupport'),
                     Path(API_PATH).joinpath('ordersupport'), dirs_exist_ok=True)
-    shutil.copytree(Path(DEST_PATH).joinpath('community-digikey-api-ordersupport/digikey.v3.ordersupport'),
+    shutil.copytree(Path(DEST_PATH).joinpath('community-digikey-api-ordersupport/e707_digikey.v3.ordersupport'),
                     Path(API_PATH).joinpath('ordersupport'), dirs_exist_ok=True)
 
     logging.info('Copy generated batchproductdetails files to api destination')
     shutil.copytree(
-        Path(DEST_PATH).joinpath('community-digikey-api-batchproductdetails/digikey/v3/batchproductdetails'),
+        Path(DEST_PATH).joinpath('community-digikey-api-batchproductdetails/e707_digikey/v3/batchproductdetails'),
         Path(API_PATH).joinpath('batchproductdetails'), dirs_exist_ok=True)
     shutil.copytree(
-        Path(DEST_PATH).joinpath('community-digikey-api-batchproductdetails/digikey.v3.batchproductdetails'),
+        Path(DEST_PATH).joinpath('community-digikey-api-batchproductdetails/e707_digikey.v3.batchproductdetails'),
         Path(API_PATH).joinpath('batchproductdetails'), dirs_exist_ok=True)
 
     logging.info('Copy generated barcode files to api destination')
-    shutil.copytree(Path(DEST_PATH).joinpath('community-digikey-api-barcode/digikey/v3/barcode'),
+    shutil.copytree(Path(DEST_PATH).joinpath('community-digikey-api-barcode/e707_digikey/v3/barcode'),
                     Path(API_PATH).joinpath('barcode'), dirs_exist_ok=True)
-    shutil.copytree(Path(DEST_PATH).joinpath('community-digikey-api-barcode/digikey.v3.barcode'),
+    shutil.copytree(Path(DEST_PATH).joinpath('community-digikey-api-barcode/e707_digikey.v3.barcode'),
                     Path(API_PATH).joinpath('barcode'), dirs_exist_ok=True)
 
 

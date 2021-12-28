@@ -4,12 +4,12 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="digikey-api",
-    version="0.6.1",
-    author="Peter Oostewechel",
-    author_email="peter_oostewechel@hotmail.com",
+    name="e707-digikey-api",
+    version="0.9",
+    author="Electro707",
+    author_email="develop@electro707.com",
     license="GPL v3",
-    url="https://github.com/peeter123/digikey-api",
+    url="https://github.com/Electro707/digikey-api/tree/e707_fork",
     description="Python client for Digikey API",
     long_description=long_description,
     long_description_content_type="text/markdown",
