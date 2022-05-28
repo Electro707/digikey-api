@@ -50,7 +50,7 @@ class DigikeyAPI:
                 a chance to set the client secret and client id if it's not in the config file already
             """
             # Configure OAuth2 access token for authorization: oauth2AccessCodeSecurity
-            self._digikeyApiToken = digikey.oauth.oauth2.TokenHandler(self.config, version=3, sandbox=self.sandbox).get_access_token()
+            self._digikeyApiToken = e707_digikey.oauth.oauth2.TokenHandler(self.config, version=3, sandbox=self.sandbox).get_access_token()
 
             # Populate reused ids
             self.authorization = self._digikeyApiToken.get_authorization()
